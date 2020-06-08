@@ -1,7 +1,7 @@
 {
-  "name": "fleica",
+  "name": "demo",
   "version": "1.0.0",
-  "description": "风峦资讯",
+  "description": "demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
