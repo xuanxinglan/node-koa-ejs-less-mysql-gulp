@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <%- include('components/css.ejs') %>
+    <link rel="stylesheet" href="/plugins/cropper/cropper.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<div style="padding: 15px;">
+    <div>
+        <form class="layui-form" id="From">
+            <div class="layui-form-item avatar">
+                <label class="layui-form-label">头像</label>
+                <div class="layui-input-block">
+                    <div class="uploadImgBox" id="uploadImgBox">
+                        <div class="uploadImgBtn"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" required lay-verify="required" lay-reqtext="昵称不能为空" lay-verType="tips"
+                           placeholder="请输入昵称" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限</label>
+                <div class="layui-input-block">
+                    <select name="permission" lay-verify="">
+                        <option value="">请选择权限</option>
+                        <option value="0" >超级管理员</option>
+                        <option value="1">管理员</option>
+                        <option value="2">编辑</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">账号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="account" required lay-verify="required" lay-reqtext="账号不能为空" lay-verType="tips"
+                           placeholder="请输入账号" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="password" required lay-verify="required" lay-reqtext="密码不能为空" lay-verType="tips"
+                           placeholder="请输入密码" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn save-btn" lay-submit lay-filter="submit">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="cropperBox" id="cropper">
+        <div class="cropper">
+            <div class="imgBox">
+                <img id="image" src="../images/user.jpg"/>
+            </div>
+        </div>
+        <div class="cropperTool">
+            <div class="toolBox">
+                <span class="tool zoomIn"></span>
+                <span class="tool zoomOut"></span>
+                <span class="tool rotate"></span>
+            </div>
+            <div class="btnBox">
+                <span class="cropperSave">
+                    <i class="layui-icon layui-icon-loading-1 layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                    <b class="confirmTxt">确认</b>
+                    <b class="uploadTxt">上传中</b>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('components/js.ejs') %>
+<script src="/plugins/cropper/cropper.min.js"></script>
+<script src="https://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+<script src="/js/uploadFile.js"></script>
+<script src="/js/addAdministrator.js"></script>
+</body>
+</html>

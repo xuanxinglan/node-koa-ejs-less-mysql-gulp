@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <%- include('components/css.ejs') %>
+    <link rel="stylesheet" href="/plugins/cropper/cropper.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<div style="padding: 15px;">
+    <div>
+        <form class="layui-form" id="From">
+            <div class="layui-form-item">
+                <label class="layui-form-label">封面图</label>
+                <div class="layui-input-block">
+                    <div class="uploadImgBox" id="cpBox">
+                        <div class="uploadImgBtn"></div>
+                        <% if(datas[0].coverImg != null && datas[0].coverImg != "undefined" && datas[0].coverImg != ""){ %>
+                            <div class="imgPreview" style="background-image:url(<%= datas[0].coverImg %>)">
+                                <input type="hidden" class="img-fileUrl" name="avatar" value="<%= datas[0].coverImg %>"/>
+                                <div class="del-btn">
+                                    <i class="layui-icon layui-icon-close"></i>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="display: none">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" class="layui-input" value="<%= datas[0].ID %>"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" lay-reqtext="项目名称不能为空" lay-verType="tips"
+                           placeholder="请输入项目名称" autocomplete="off" class="layui-input" value="<%= datas[0].name %>"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">简介</label>
+                <div class="layui-input-block">
+                    <textarea name="summary"  lay-reqtext="简介不能为空" lay-verType="tips" placeholder="请输入简介" class="layui-textarea"><%= datas[0].summary %></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: none">
+                <label class="layui-form-label">标签值</label>
+                <div class="layui-input-block">
+                    <input type="text" name="tagsVal" id="tagsVal" class="layui-input" value="<%= datas[0].tags %>"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-block">
+                    <input  type="checkbox" name="tags" title="CMS" lay-skin="primary" value="1">
+                    <input type="checkbox" name="tags" title="IOS" lay-skin="primary" value="2">
+                    <input type="checkbox" name="tags" title="Android" lay-skin="primary" value="3">
+                    <input type="checkbox" name="tags" title="WEB" lay-skin="primary" value="4">
+                    <input type="checkbox" name="tags" title="小程序" lay-skin="primary" value="5">
+                </div>
+            </div>
+            <div class="hideInfo cmsInfo">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">CMS测试环境地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developmentCMS" placeholder="请输入CMS测试环境地址" class="layui-input" maxlength="300" value="<%= datas[0].developmentCMS %>"/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">CMS正式环境地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="productionCMS" placeholder="请输入CMS正式环境地址" class="layui-input" maxlength="300" value="<%= datas[0].productionCMS %>"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hideInfo iosInfo">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">IOS测试版下载地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developmentIOS" placeholder="请输入APP Store下载地址" class="layui-input" maxlength="300" value="<%= datas[0].developmentIOS %>"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hideInfo iosInfo">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">APP Store下载地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="productionIOS" placeholder="请输入APP Store下载地址" class="layui-input" maxlength="300" value="<%= datas[0].productionIOS %>"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hideInfo androidInfo">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">APK测试版下载地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developmentAPK" placeholder="请输入APK下载地址"  class="layui-input" maxlength="300" value="<%= datas[0].developmentAPK %>"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hideInfo androidInfo">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">APK正式版下载地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="productionAPK" placeholder="请输入APK下载地址"  class="layui-input" maxlength="300" value="<%= datas[0].productionAPK %>"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hideInfo webInfo">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">WEB测试环境地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="developmentWEB" placeholder="请输入WEB测试环境地址" class="layui-input" maxlength="300" value="<%= datas[0].developmentWEB %>"/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">WEB正式环境地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="productionWEB" placeholder="请输入WEB正式环境地址" class="layui-input" maxlength="300" value="<%= datas[0].productionWEB %>"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hideInfo miniProgram">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">小程序二维码</label>
+                    <div class="layui-input-block">
+                        <div class="uploadImgBox miniProgramBox" id="miniProgramBox">
+                            <div class="miniProgramBtn"></div>
+                            <% if(datas[0].miniProgram && datas[0].miniProgram != undefined && datas[0].miniProgram != null && datas[0].miniProgram !="" && datas[0].miniProgram != "undefined"){ %>
+
+                                <div class="imgPreview" style="background-image:url(<%= datas[0].miniProgram %>)">
+                                    <input type="hidden" class="img-fileUrl" name="miniProgram" value="<%= datas[0].miniProgram %>"/>
+                                    <div class="del-btn">
+                                        <i class="layui-icon layui-icon-close"></i>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注信息</label>
+                <div class="layui-input-block">
+                    <textarea name="remark"  maxlength="500" class="layui-textarea"><%= datas[0].remark %></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="display: none">
+                <label class="layui-form-label">封面图</label>
+                <div class="layui-input-block">
+                    <div class="uploadImgBox">
+                        <div class="editImgBtn" id="editImgBtn"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="display: none">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea id="contentHtmlVal" name="contentHtml"><%= datas[0].contentHtml %></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea id="contentHtml" rows="12" cols="80" style="width: 100%"><%= datas[0].contentHtml %></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn save-btn" lay-submit lay-filter="submit">保存</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="cropperBox" id="cropper">
+        <div class="cropper">
+            <div class="imgBox">
+                <img id="image" src="../../images/user.jpg"/>
+            </div>
+        </div>
+        <div class="cropperTool">
+            <div class="toolBox">
+                <span class="tool zoomIn"></span>
+                <span class="tool zoomOut"></span>
+                <span class="tool rotate"></span>
+            </div>
+            <div class="btnBox">
+                <span class="cropperSave">
+                    <i class="layui-icon layui-icon-loading-1 layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                    <b class="confirmTxt">确认</b>
+                    <b class="uploadTxt">上传中</b>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('components/js.ejs') %>
+<script src="/plugins/cropper/cropper.min.js"></script>
+<script src="https://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+<script type="text/javascript" src="/plugins/xheditor/xheditor.js"></script>
+<script type="text/javascript" src="/plugins/xheditor/xheditor_lang/zh-cn.js"></script>
+<script src="/js/uploadProjectImg.js"></script>
+<script src="/js/modProject.js"></script>
+</body>
+</html>

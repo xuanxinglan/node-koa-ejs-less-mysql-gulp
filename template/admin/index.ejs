@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin</title>
+    <%- include('components/css.ejs') %>
+    <link rel="stylesheet" href="/css/index.css"/>
+
+</head>
+<body id="parentBody" class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <%- include('components/header.ejs') %>
+    <%- include('components/nav.ejs') %>
+    <div class="content-wrapper">
+        <iframe name="contentIframe" id="contentIframe" src="/admin/project-list"></iframe>
+    </div>
+</div>
+
+<%- include('components/js.ejs') %>
+<script src="/plugins/bootstrap-v3.3.7/js/bootstrap.min.js"></script>
+<script src="/plugins/adminLTE/adminlte.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <%- include('components/css.ejs') %>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body style="background-color: #F8F9FA">
+
+<div class="subpageBox">
+    <div class="leftBox tableBox">
+        <div class="tableFilter">
+            <form class="layui-form" action="" lay-filter="searchForm">
+                <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                        <select name="status" lay-filter="status">
+                            <option value="">选择状态</option>
+                            <option value="1">发布</option>
+                            <option value="0">未发布</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline search">
+                        <input type="text" name="keys" class="layui-input keywords" placeholder="关键字"/>
+                        <button class="layui-btn searchBtn" lay-submit="" lay-filter="searchBtn">
+                            <i class="layui-icon layui-icon-search"></i>
+                        </button>
+                    </div>
+                    <div class="layui-input-inline btnBox">
+                        <button type="button" class="layui-btn" id="addData"><i class="layui-icon layui-icon-add-1"></i>NEW
+                        </button>
+                        <button type="button" class="layui-btn" id="editData"><i class="layui-icon layui-icon-edit"></i>EDIT
+                        </button>
+                        <button type="button" class="layui-btn" id="delData"><i class="layui-icon layui-icon-delete"></i>DELETE
+                        </button>
+                        <button type="button" class="layui-btn" id="publishData"><i class="layui-icon layui-icon-release"></i>PUBLISH
+                        </button>
+                        <button type="button" class="layui-btn" id="instghtsBtn"><i class="fa fa-chevron-circle-left"></i>INSIGHTS
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <table id="projectList" lay-filter="projectList"></table>
+    </div>
+    <div class="rightBox">
+        <div class="rightTit">
+            <div class="rightTxt">详情</div>
+            <div class="rightClose">
+                <i class="layui-icon layui-icon-close"></i>
+            </div>
+        </div>
+
+        <div class="rightTab">
+            <div class="tabhd cl">
+                <ul>
+                    <li class="on">属性</li>
+                </ul>
+            </div>
+            <div class="tabBd">
+                <div class="tabCnt" id="rightFormBox">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/html" id="barDemo">
+    <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" lay-event="read">
+        <i class="layui-icon">&#xe705;</i> 查看
+    </button>
+</script>
+
+<%- include('components/js.ejs') %>
+<script src="/js/project-list.js"></script>
+</body>
+</html>

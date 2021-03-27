@@ -13,6 +13,7 @@ router.use(koaServerHttpProxy("/api",{
 staticFile(router);
 
 router.use('/api', require('./api'));
+router.use('/admin', require('./admin'));
 router.use('', require('./web'));
 
 

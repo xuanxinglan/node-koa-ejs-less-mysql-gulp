@@ -3,8 +3,6 @@ const base='/api';
 module.exports={
   //服务器
   port: 8080,
-
-  port: 8080,
   md5_key: '忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。',
 
   //数据库
